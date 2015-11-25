@@ -1,35 +1,124 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html ng-app="modone">
-    
-    <head >
+    <head>
         <script src="js/libs/angular.min.js"></script>
         <script src="js/libs/angular-route.js"></script>
         <script src="js/libs/appmodule.js"></script>
-        
-         <link rel="stylesheet" href="css/bootstrap.css">
-        <title>Blueprints</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Pictureka</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     </head>
     <body ng-controller="plan_control" >
-        {{23+17}}
-        
-        <select ng-model="select">
-            <option  ng-repeat="o in array" value="{{o}}">
-            {{o}}
-            </option>
-        </select>
-        <button type="button" class="btn btn-warning"  ng-click="loadData()">
-            GET
-        </button>
-        <button type="button" class="btn btn-warning"  ng-click="consultPLane()">
-            DRAW
-        </button>
-        <button type="button" class="btn btn-warning"  ng-click="consultPLane2()">
-            DRAW2
-        </button>
-        <canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;"> </canvas> 
-        <svg id="mySVG" width="800" height="600" style="border:1px solid #000000;"></svg>
-        
+
+        <!-- Page Wrapper -->
+        <div id="page-wrapper">
+
+            <!-- Header -->
+            <header id="header" class="alt">
+                <h1><a href="index.html">Pictureka</a></h1>
+                <nav>
+                        <a href="#menu">Menu</a>
+                </nav>
+            </header>
+
+            <!-- Menu -->
+            <nav id="menu">
+                <div class="inner">
+                    <h2>Menu</h2>
+                    <ul class="links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="newGame.html">New Game</a></li>
+                        <li><a href="elements.html">About</a></li>
+                    </ul>
+                    <a href="#" class="close">Close</a>
+                </div>
+            </nav>
+
+            <!-- Banner -->
+            <section id="banner">
+                <div class="inner">
+                    <div class="image"><img src="images/logo.png" alt="" /></div>
+                    <p>Find it fast!  Find it first!</p>
+                    <a href="newGame.html" class="button">New Game</a>
+                </div>
+            </section>
+
+            <!-- Wrapper -->
+            <section id="wrapper">
+
+                <!-- One -->
+                <section id="one" class="wrapper spotlight style1">
+                    <div class="inner">
+                        <a href="#" class="image"><img src="images/pictureka1.jpg" alt="" /></a>
+                        <div class="content">
+                            <h2 class="major">PICTUREKA</h2>
+                            <p>Find it fast!  Find it first!  Pictureka is the exciting game of visual hide & seek.  Collect the most mission cards to win! Place the 9 game board tiles on the table in a 3 x 3 grid.  Players than take turns rolling the dice, selecting a mission card and trying to find objects fast or first.  Three different card decks keep the game exciting -- players either have to find a matching image or objects that fall into a category like "things that can fly".  And watch out, the gameboard can change on any turn -- special mission cards instruct players to turn over, rotate or switch one of the 9 gameboard tiles.  In this game its finders keepers: you get the card if you find the object fast or first.  Collect enough cards to win, and you're the Pictureka champ!</p>
+                            <a href="http://www.hasbro.com/en-us/product/pictureka:93A194DB-6D40-1014-8BF0-9EFBF894F9D4" class="special">Learn more</a>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+
+            <!-- Footer -->
+            <section id="footer">
+                <div class="inner">
+                    <h2 class="major">Get in touch</h2>
+                    <p>If you want to get mor information about the game, you can contact us at anytime.</p>
+                    <form method="post" action="#">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" />
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="4"></textarea>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Send Message" /></li>
+                        </ul>
+                    </form>
+                    <ul class="contact">
+                        <li class="fa-home">
+                            Escuela Colombiana de Ingeniería<br />
+                            AK.45 No.205-59 (Autopista Norte)<br />
+                            Bogotá
+                        </li>
+                        <li class="fa-phone">+57(1) 668 3600</li>
+                        <li class="fa-envelope"><a href="#">info@escuelaing.edu.co</a></li>
+                        <li class="fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
+                        <li class="fa-facebook"><a href="#">facebook.com/untitled-tld</a></li>
+                        <li class="fa-instagram"><a href="#">instagram.com/untitled-tld</a></li>
+                    </ul>
+                    <ul class="copyright">
+                            <li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+
     </body>
 </html>

@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html ng-app="modtwo">
+    <head>
+        <script src="js/libs/angular.min.js"></script>
+        <script src="js/libs/angular-route.js"></script>
+        <script src="js/libs/gamemodule.js"></script>
+        
+        <title>Pictureka</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    </head>
+    <body ng-controller="game_control" ng-init="loadData()" ng-app="loadData()"> 
+
+        <!-- Page Wrapper -->
+        <div id="page-wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <h1><a href="index.html">Pictureka</a></h1>
+                <nav>
+                    <a href="#menu">Menu</a>
+                </nav>
+            </header>
+
+            <!-- Menu -->
+            <nav id="menu">
+                <div class="inner">
+                    <h2>Menu</h2>
+                    <ul class="links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="newGame.html">End Game</a></li>
+                    </ul>
+                    <a href="#" class="close">Close</a>
+                </div>
+            </nav>          
+            
+            <!-- Wrapper -->
+            <section id="wrapper">
+                <header>
+                    <div class="inner">
+                        <div class="image"><img src="images/logo.png" alt="" ng-click="alertPrint()"/></div>
+                        <p>Create or join a game.</p>
+                    </div>
+                </header>
+                
+                <article class="major">
+                    <table border="0">
+                        
+                        <tbody>
+                            <tr>
+                                <td><img id="cell00" ng-click="getNumberCell('cell00')" /></td>
+                                <td><img id="cell01" ng-click="alertPrint()" /></td>
+                                <td><img id="cell02" ng-click="alertPrint()" /></td>
+                                <td><img id="cell03" ng-click="alertPrint()" /></td>
+                                <td><img id="cell04" ng-click="alertPrint()" /></td>
+                                <td><img id="cell05" ng-click="alertPrint()" /></td>
+                                <td><img id="cell06" ng-click="alertPrint()" /></td>
+                                <td><img id="cell07" ng-click="alertPrint()" /></td>
+                                <td><img id="cell08" ng-click="alertPrint()" /></td>
+                                <td><img id="cell09" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell10" ng-click="alertPrint()" /></td>
+                                <td><img id="cell11" ng-click="alertPrint()" /></td>
+                                <td><img id="cell12" ng-click="alertPrint()" /></td>
+                                <td><img id="cell13" ng-click="alertPrint()" /></td>
+                                <td><img id="cell14" ng-click="alertPrint()" /></td>
+                                <td><img id="cell15" ng-click="alertPrint()" /></td>
+                                <td><img id="cell16" ng-click="alertPrint()" /></td>
+                                <td><img id="cell17" ng-click="alertPrint()" /></td>
+                                <td><img id="cell18" ng-click="alertPrint()" /></td>
+                                <td><img id="cell19" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell20" ng-click="alertPrint()" /></td>
+                                <td><img id="cell21" ng-click="alertPrint()" /></td>
+                                <td><img id="cell22" ng-click="alertPrint()" /></td>
+                                <td><img id="cell23" ng-click="alertPrint()" /></td>
+                                <td><img id="cell24" ng-click="alertPrint()" /></td>
+                                <td><img id="cell25" ng-click="alertPrint()" /></td>
+                                <td><img id="cell26" ng-click="alertPrint()" /></td>
+                                <td><img id="cell27" ng-click="alertPrint()" /></td>
+                                <td><img id="cell28" ng-click="alertPrint()" /></td>
+                                <td><img id="cell29" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell30" ng-click="alertPrint()" /></td>
+                                <td><img id="cell31" ng-click="alertPrint()" /></td>
+                                <td><img id="cell32" ng-click="alertPrint()" /></td>
+                                <td><img id="cell33" ng-click="alertPrint()" /></td>
+                                <td><img id="cell34" ng-click="alertPrint()" /></td>
+                                <td><img id="cell35" ng-click="alertPrint()" /></td>
+                                <td><img id="cell36" ng-click="alertPrint()" /></td>
+                                <td><img id="cell37" ng-click="alertPrint()" /></td>
+                                <td><img id="cell38" ng-click="alertPrint()" /></td>
+                                <td><img id="cell39" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell40" ng-click="alertPrint()" /></td>
+                                <td><img id="cell41" ng-click="alertPrint()" /></td>
+                                <td><img id="cell42" ng-click="alertPrint()" /></td>
+                                <td><img id="cell43" ng-click="alertPrint()" /></td>
+                                <td><img id="cell44" ng-click="alertPrint()" /></td>
+                                <td><img id="cell45" ng-click="alertPrint()" /></td>
+                                <td><img id="cell46" ng-click="alertPrint()" /></td>
+                                <td><img id="cell47" ng-click="alertPrint()" /></td>
+                                <td><img id="cell48" ng-click="alertPrint()" /></td>
+                                <td><img id="cell49" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell50" ng-click="alertPrint()" /></td>
+                                <td><img id="cell51" ng-click="alertPrint()" /></td>
+                                <td><img id="cell52" ng-click="alertPrint()" /></td>
+                                <td><img id="cell53" ng-click="alertPrint()" /></td>
+                                <td><img id="cell54" ng-click="alertPrint()" /></td>
+                                <td><img id="cell55" ng-click="alertPrint()" /></td>
+                                <td><img id="cell56" ng-click="alertPrint()" /></td>
+                                <td><img id="cell57" ng-click="alertPrint()" /></td>
+                                <td><img id="cell58" ng-click="alertPrint()" /></td>
+                                <td><img id="cell59" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell60" ng-click="alertPrint()" /></td>
+                                <td><img id="cell61" ng-click="alertPrint()" /></td>
+                                <td><img id="cell62" ng-click="alertPrint()" /></td>
+                                <td><img id="cell63" ng-click="alertPrint()" /></td>
+                                <td><img id="cell64" ng-click="alertPrint()" /></td>
+                                <td><img id="cell65" ng-click="alertPrint()" /></td>
+                                <td><img id="cell66" ng-click="alertPrint()" /></td>
+                                <td><img id="cell67" ng-click="alertPrint()" /></td>
+                                <td><img id="cell68" ng-click="alertPrint()" /></td>
+                                <td><img id="cell69" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell70" ng-click="alertPrint()" /></td>
+                                <td><img id="cell71" ng-click="alertPrint()" /></td>
+                                <td><img id="cell72" ng-click="alertPrint()" /></td>
+                                <td><img id="cell73" ng-click="alertPrint()" /></td>
+                                <td><img id="cell74" ng-click="alertPrint()" /></td>
+                                <td><img id="cell75" ng-click="alertPrint()" /></td>
+                                <td><img id="cell76" ng-click="alertPrint()" /></td>
+                                <td><img id="cell77" ng-click="alertPrint()" /></td>
+                                <td><img id="cell78" ng-click="alertPrint()" /></td>
+                                <td><img id="cell79" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell80" ng-click="alertPrint()" /></td>
+                                <td><img id="cell81" ng-click="alertPrint()" /></td>
+                                <td><img id="cell82" ng-click="alertPrint()" /></td>
+                                <td><img id="cell83" ng-click="alertPrint()" /></td>
+                                <td><img id="cell84" ng-click="alertPrint()" /></td>
+                                <td><img id="cell85" ng-click="alertPrint()" /></td>
+                                <td><img id="cell86" ng-click="alertPrint()" /></td>
+                                <td><img id="cell87" ng-click="alertPrint()" /></td>
+                                <td><img id="cell88" ng-click="alertPrint()" /></td>
+                                <td><img id="cell89" ng-click="alertPrint()" /></td>
+                            </tr>
+                            <tr>
+                                <td><img id="cell90" ng-click="alertPrint()" /></td>
+                                <td><img id="cell91" ng-click="alertPrint()" /></td>
+                                <td><img id="cell92" ng-click="alertPrint()" /></td>
+                                <td><img id="cell93" ng-click="alertPrint()" /></td>
+                                <td><img id="cell94" ng-click="alertPrint()" /></td>
+                                <td><img id="cell95" ng-click="alertPrint()" /></td>
+                                <td><img id="cell96" ng-click="alertPrint()" /></td>
+                                <td><img id="cell97" ng-click="alertPrint()" /></td>
+                                <td><img id="cell98" ng-click="alertPrint()" /></td>
+                                <td><img id="cell99" ng-click="alertPrint()" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table id="tableBoard">
+                        
+                    </table>
+                </article>
+                
+            </section>
+            
+            <!-- Footer -->
+            <section id="footer">
+                <div class="inner">
+                    <h2 class="major">Get in touch</h2>
+                    <p>If you want to get mor information about the game, you can contact us at anytime.</p>
+                </div>
+            </section>
+            
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>

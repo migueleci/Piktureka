@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="modone">
+    
+    <head >
+        <script src="js/libs/angular.min.js"></script>
+        <script src="js/libs/angular-route.js"></script>
+        <script src="js/libs/appmodule.js"></script>
+        
+         <link rel="stylesheet" href="css/bootstrap.css">
+        <title>Blueprints</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-controller="plan_control" >
+        
+        <form action="">
+            <input type="radio" name="ind">Individual
+            <p style="text-indent: 5em;"></p>
+
+            <input type="text" name="ID">
+            <br>
+            <input type="radio" name="mult">Multiplayer<br>
+        </form>
+
+        
+        <select ng-model="select">
+            <option  ng-repeat="o in array" value="{{o}}">
+            {{o}}
+            </option>
+        </select>
+        <button type="button" class="btn btn-warning"  ng-click="loadData()">
+            GET
+        </button>
+        <button type="button" class="btn btn-warning"  ng-click="consultPLane()">
+            DRAW
+        </button>
+        <button type="button" class="btn btn-warning"  ng-click="consultPLane2()">
+            DRAW2
+        </button>
+        
+    </body>
+</html>
