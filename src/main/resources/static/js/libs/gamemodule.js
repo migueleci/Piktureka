@@ -35,33 +35,6 @@
             alert(number);
         }
         
-        $scope.selectCard= function(cell) {
-            var configList = {
-                url: "gameControl/findCard",
-                method: "GET",
-                params: {card: cell,ID: $scope.ID}
-            };
-            
-            var response=$http(configList);
-            
-            response.success(function(data, status, headers, config) {
-                var ans = data;
-                if(ans>0){
-                    var name = "";
-                    if (ans<10){
-                        name = "0"+ans;
-                    } else {
-                        name = ""+ans;
-                    }
-                    document.getElementById("cfind"+name).style.display="none";
-                }
-            });
-
-            response.error(function(data, status, headers, config) {
-                alert("The petition has failed. HTTP Status:"+status);
-            });
-        }
-        
         $scope.getBoard = function() {
             var configList = {
                 url: "gameControl/getBoard",
@@ -148,7 +121,63 @@
             response.error(function(data, status, headers, config) {
                 alert("The petition has failed. HTTP Status:"+status);
             });
-        }
+        };
+        
+        $scope.selectCard= function(cell) {
+            var configList = {
+                url: "gameControl/findCard",
+                method: "GET",
+                params: {card: cell,ID: $scope.ID}
+            };
+            
+            var response=$http(configList);
+            
+            response.success(function(data, status, headers, config) {
+                var ans = data;
+                if(ans>0){
+                    
+                    var name = "";
+                    if (ans<10){
+                        name = "0"+ans;
+                    } else {
+                        name = ""+ans;
+                    }
+                    document.getElementById("cfind"+name).style.display="none";
+                }
+            });
+
+            response.error(function(data, status, headers, config) {
+                alert("The petition has failed. HTTP Status:"+status);
+            });
+        };
+        /*
+        $scope.hideCard= function(name) {
+            var configList = {
+                url: "gameControl/findCard",
+                method: "GET",
+                params: {card: name,ID: $scope.ID}
+            };
+            
+            var response=$http(configList);
+            
+            response.success(function(data, status, headers, config) {
+                var ans = data;
+                if(ans>0){
+                    
+                    var name = "";
+                    if (ans<10){
+                        name = "0"+ans;
+                    } else {
+                        name = ""+ans;
+                    }
+                    document.getElementById("cfind"+name).style.display="none";
+                }
+            });
+
+            response.error(function(data, status, headers, config) {
+                alert("The petition has failed. HTTP Status:"+status);
+            });
+        };*/
         
     });
 }) ();

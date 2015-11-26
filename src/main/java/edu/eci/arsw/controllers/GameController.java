@@ -43,5 +43,10 @@ public class GameController {
         int j = Integer.parseInt(card.substring(5));
         return services.findCard(i, j, ID);
     }
+    /*
+    @RequestMapping(value="/hideCard",method = RequestMethod.POST)
+    public Integer[] hideCard(String card,String ID) {       
+        return services.findCard(i, j, ID);
+    }*/
     
 }

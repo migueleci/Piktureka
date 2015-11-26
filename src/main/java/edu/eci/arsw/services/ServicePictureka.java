@@ -29,6 +29,7 @@ public class ServicePictureka {
     
     public Board getBoardByID(String ID){
         for(Board b:boards){
+            System.out.println(b.getID()+" ## "+ID);
             if(b.getID().compareTo(ID)==0){
                 return b;
             }

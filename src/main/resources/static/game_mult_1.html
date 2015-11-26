@@ -4,11 +4,11 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html ng-app="modone">
+<html ng-app="modthree">
     <head>
         <script src="js/libs/angular.min.js"></script>
         <script src="js/libs/angular-route.js"></script>
-        <script src="js/libs/appmodule.js"></script>
+        <script src="js/libs/multmodule.js"></script>
         
         <title>Pictureka</title>
         <meta charset="utf-8" />
@@ -18,7 +18,7 @@
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     </head>
-    <body ng-controller="game_control" ng-init="getIDGameMult()" ng-app="getIDGameMult()"> 
+    <body ng-controller="game_control"> 
 
         <!-- Page Wrapper -->
         <div id="page-wrapper">
@@ -49,9 +49,13 @@
                 <header>
                     <div class="inner">
                         <div class="image"><img src="images/logo.png" alt=""/></div>
-                        
-                        <table id="cardsFind" border="0">
-                        </table>
+                        <div class="inner" id="startG">
+                            <button class="button" ng-click="joinMultGame()">Join A Game</button>
+                            <input type="text" id="IDGame" value="">
+                            <button class="button" ng-click="createMultGame()">New Game</button>
+                        </div>
+                        <table id="cardsFind" border="0"> </table>
+                        <p id="dispGID"></p>
 
                     </div>
                 </header>
