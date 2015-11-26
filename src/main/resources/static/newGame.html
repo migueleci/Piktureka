@@ -19,7 +19,7 @@
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         
     </head>
-    <body  ng-controller="plan_control" >
+    <body  ng-controller="game_control" >
 
         <!-- Page Wrapper -->
         <div id="page-wrapper">
@@ -73,7 +73,7 @@
                         <div class="content">
                             <h2 class="major">Create Multiplayer Game</h2>
                             <p>Start your own multiplayer game, and invite your friends to have fun together.</p>
-                            <a href="#" class="button">Start</a>
+                            <a href="game_mult.html" class="button">Start</a>
                         </div>
                     </div>
                 </section>
@@ -85,7 +85,7 @@
                         <div class="content">
                             <h2 class="major">Join Multiplayer Game</h2>
                             <p>Join someone's else game, get the game ID and have fun.</p>
-                            <textarea id="IDGame"></textarea> <a href="#" class="button">Start</a>
+                            <textarea id="IDGame"></textarea> <a href="game_mult_1.html" class="button" ng-click="setIDGameMult()">Start</a>
                         </div>
                     </div>
                 </section>

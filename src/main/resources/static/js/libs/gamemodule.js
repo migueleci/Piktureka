@@ -7,6 +7,8 @@
     var app = angular.module('modtwo', []);
     app.controller('game_control', function($scope,$http,$compile) {
         $scope.board = [[]];
+        $scope.cards = [];
+        $scope.numFind = 0;
         $scope.width = 0;
         $scope.height= 0;
         $scope.select = "";
@@ -33,8 +35,31 @@
             alert(number);
         }
         
-        $scope.alertPrint = function() {
-            alert("number");
+        $scope.selectCard= function(cell) {
+            var configList = {
+                url: "gameControl/findCard",
+                method: "GET",
+                params: {card: cell,ID: $scope.ID}
+            };
+            
+            var response=$http(configList);
+            
+            response.success(function(data, status, headers, config) {
+                var ans = data;
+                if(ans>0){
+                    var name = "";
+                    if (ans<10){
+                        name = "0"+ans;
+                    } else {
+                        name = ""+ans;
+                    }
+                    document.getElementById("cfind"+name).style.display="none";
+                }
+            });
+
+            response.error(function(data, status, headers, config) {
+                alert("The petition has failed. HTTP Status:"+status);
+            });
         }
         
         $scope.getBoard = function() {
@@ -42,7 +67,6 @@
                 url: "gameControl/getBoard",
                 method: "GET",
                 params: {ID: $scope.ID}
-                
             };
             
             var response=$http(configList);
@@ -51,9 +75,35 @@
                 $scope.board = data.board;
                 $scope.width = data.width;
                 $scope.height = data.height;
+                $scope.cards = data.cards;
+                $scope.numFind = data.cards2Find;
+                
+                var crd= document.getElementById("cardsFind");
+                var side = $(window).width()/15;
+                var i,j;
+                
+                var tr = document.createElement('TR');
+                for (i=0;i<$scope.numFind;i++){
+                    var td = document.createElement('TD');
+                    var image = document.createElement("img");
+                    var name = "";
+                    if ($scope.cards[i]<10){
+                        name = "0"+$scope.cards[i];
+                    } else {
+                        name = ""+$scope.cards[i];
+                    }
+
+                    image.setAttribute("src","images/cards/IMG0"+name+".jpg");
+                    image.setAttribute("id","cfind"+name);
+                    image.style.height = side+'px';
+                    image.style.width = side+'px';
+                    td.appendChild(image);
+                    tr.appendChild(td);
+                }
+                crd.appendChild(tr);
                 
                 var tbl= document.getElementById("tableBoard");
-                var i,j;
+                
                 for (i=0;i<$scope.width;i++){
                     for (j=0;j<$scope.height;j++){
                         var image = document.getElementById("cell"+i+j);
@@ -64,21 +114,33 @@
                             name = ""+$scope.board[i][j];
                         }
                         image.setAttribute("src","images/cards/IMG0"+name+".jpg");
-                        image.setAttribute("class","button");
-                        /*
-                        $("#dynamicContent").html(
-                            $compile(
-                                "<button ng-click='count = count + 1' ng-init='count=0'>Increment</button><span>count: {{count}} </span>"
-                            )(scope)
-                        );
-                        var cell_button = document.createElement("input");
-                        cell_button.setAttribute("value",board[i][j]);t
-                        cell_button.setAttribute("class","button");
-                        cell_button.setAttribute("ng-click","lo adData()");
-                        td.appendChild(cell_button);
-                        */
+                        //image.setAttribute("class","button");
+                        image.style.height = side+'px';
+                        image.style.width = side+'px';
                     }
                 }
+                
+                /* Generate Table Dynamically
+                for (i=0;i<$scope.width;i++){
+                    var tr = document.createElement('TR');
+                    for (j=0;j<$scope.height;j++){
+                        var td = document.createElement('TD');
+                        var image = document.createElement("img");
+                        var name = "";
+                        if ($scope.board[i][j]<10){
+                            name = "0"+$scope.board[i][j];
+                        } else {
+                            name = ""+$scope.board[i][j];
+                        }
+                        
+                        image.setAttribute("src","images/cards/IMG0"+name+".jpg");
+                        image.setAttribute("class","button");
+                        image.setAttribute("id","cell"+i+j);
+                        td.appendChild(image);
+                        tr.appendChild(td);
+                    }
+                    tbl.appendChild(tr);
+                }*/
                 
                 
             });

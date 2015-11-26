@@ -37,9 +37,11 @@ public class GameController {
         return services.getBoardByID(ID);
     }
     
-    @RequestMapping(value="/getPos",method = RequestMethod.GET)
-    public String getPosition() {       
-        return "Works";
+    @RequestMapping(value="/findCard",method = RequestMethod.GET)
+    public int findCard(String card,String ID) {       
+        int i = Integer.parseInt(card.substring(4,5));
+        int j = Integer.parseInt(card.substring(5));
+        return services.findCard(i, j, ID);
     }
     
 }

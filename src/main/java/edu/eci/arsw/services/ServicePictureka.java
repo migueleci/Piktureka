@@ -36,5 +36,9 @@ public class ServicePictureka {
         return null;
     }
     
-    
+    public int findCard(int i, int j, String ID){
+        Board board = getBoardByID(ID);
+        Integer[] cards = board.getCards();
+        return board.cardFinded(i, j);
+    }
 }

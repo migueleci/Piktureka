@@ -78,15 +78,15 @@ public class Board {
         return ID;
     }
     
-    public boolean cardFinded(int posX, int posY){
+    public int cardFinded(int posX, int posY){
         int cardNumber = board[posX][posY];
         for (int i = 0; i < cards2Find; i++) {
             if(cards[i]==cardNumber){
                 cards[i]=-1;
-                return true;
+                return cardNumber;
             }
         }
-        return false;
+        return -1;
     }
     
 }
