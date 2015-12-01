@@ -142,7 +142,21 @@
                     } else {
                         name = ""+ans;
                     }
-                    document.getElementById("cfind"+name).style.display="none";
+                    var picked = 0;
+                    for (i=0;i<$scope.numFind;i++){
+                        if($scope.cards[i]==ans){
+                            $scope.cards[i]=-1;
+                        }
+                        if($scope.cards[i]<0){
+                            picked += 1;
+                        }
+                    }
+                    document.getElementById("cfind"+name).style.visibility = "hidden";
+                    if(picked==$scope.numFind){
+                        alert("Juego Terminado.\nGracias por Jugar.");
+                        //location.replace();
+                        location.reload("newGame.html");
+                    }
                 }
             });
 

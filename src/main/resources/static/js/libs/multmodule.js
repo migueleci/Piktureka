@@ -217,8 +217,8 @@
             }
             if(picked==$scope.numFind){
                 alert("Juego Terminado.\nGracias por Jugar.");
-                //location.replace();
-                location.reload("newGame.html");
+                window.location.replace("newGame.html");
+                window.location.reload();
             }
         };
         
@@ -289,7 +289,6 @@
         }
 
         window.onload = init;
-
         
     });
 }) ();
