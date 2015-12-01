@@ -51,14 +51,14 @@
                 <header>
                     <div class="inner">
                         <div class="image"><img src="images/logo.png" alt=""/></div>
-                        <div class="inner" id="startG">
-                            <button id="joinG" class="button" ng-click="joinMultGame()">Join A Game</button>
-                            <input type="text" id="IDGame" value="">
+                        <div class="box" id="startG">
+                            <input type="text" id="IDGame" value="" maxlength="14" placeholder="Game ID" style='width:30%'>
+                            <input type="text" id="IDUser" value="" maxlength="10" placeholder="User ID" style='width:30%'> 
+                            <button id="joinG" class="button" ng-click="joinMultGame()">Join A Game</button> 
                             <button id="createG" class="button" ng-click="createMultGame()">New Game</button>
                         </div>
+                        <div id="IDdiv" style='visibility:hidden'>ID Game: <p id="dispGID"></p></div>
                         <table id="cardsFind" border="0"> </table>
-                        <p id="dispGID"></p>
-
                     </div>
                 </header>
                 

@@ -15,29 +15,41 @@
         $scope.select = "";
         $scope.ID="";
         $scope.IDPlayer="";
+        $scope.points=0;
+        $scope.mapUsers = {};
+        $scope.maxScore = 0;
         /*
          * Game creation
          * @returns {undefined}
          */
         $scope.createMultGame = function() {
             
-            var configList = {
-                method: "GET",
-                url: "gameControl/"
-            };
+            var user = document.getElementById("IDUser").value;
+            if(user!=""){
+                var configList = {
+                    method: "GET",
+                    url: "gameControl/"
+                };
+                
+                var response=$http(configList);
 
-            var response=$http(configList);
+                response.success(function(data, status, headers, config) {
+                    connect();
+                    $scope.ID=data;
+                    $scope.IDPlayer = user;
+                    $scope.getBoard();
+                    document.getElementById("startG").style.visibility = "hidden";
+                    document.getElementById("dispGID").innerHTML = $scope.ID;
+                    document.getElementById("IDdiv").style.visibility = "visible";
+                });
 
-            response.success(function(data, status, headers, config) {
-                $scope.ID=data;
-                $scope.getBoard();
-                document.getElementById("startG").style.visibility = "hidden";
-                document.getElementById("dispGID").innerHTML = $scope.ID;
-            });
-
-            response.error(function(data, status, headers, config) {
-                alert("The petition has failed. HTTP Status:"+status);
-            });
+                response.error(function(data, status, headers, config) {
+                    alert("The petition has failed. HTTP Status:"+status);
+                });
+            } else {
+                alert("Please enter an User ID");
+            }
+            
         };
         
         $scope.joinMultGame = function() {
@@ -48,29 +60,29 @@
                 method: "GET",
                 params: {ID: IDGame}
             };
+            var user = document.getElementById("IDUser").value;
+            if(user!=""){
+                var response=$http(configList);
 
-            var response=$http(configList);
+                response.success(function(data, status, headers, config) {
+                    if(data){
+                        connect();
+                        $scope.ID = IDGame;
+                        $scope.IDPlayer = user;
+                        $scope.getBoard();
+                        document.getElementById("startG").style.visibility = "hidden";
+                    } else {
+                        alert("Game "+IDGame+" does not exist! Check and try again.");
+                    }
+                });  
 
-            response.success(function(data, status, headers, config) {
-                if(data){
-                    $scope.ID = IDGame;
-                    $scope.getBoard();
-                    document.getElementById("startG").style.visibility = "hidden";
-                } else {
-                    alert("Game "+IDGame+" does not exist! Check and try again.");
-                }
-            });  
-
-            response.error(function(data, status, headers, config) {
-                alert("The petition has failed. HTTP Status:"+status);
-            });
-                
-            
+                response.error(function(data, status, headers, config) {
+                    alert("The petition has failed. HTTP Status:"+status);
+                });
+            } else {
+                alert("Please enter an User ID");
+            }
         };
-        
-        $scope.createGame = function() {
-            
-        };     
         
         $scope.getBoard = function() {
             var configList = {
@@ -180,7 +192,7 @@
             
             response.success(function(data, status, headers, config) {
                 var ans = data;
-                if(ans>0){
+                if(ans>=0){
                     var name = "";
                     if (ans<10){
                         name = "0"+ans;
@@ -192,7 +204,7 @@
                             $scope.cards[i]=-1;
                         }
                     }
-                    sendMessage($scope.ID+"["+$scope.cards.toString()+"]");
+                    sendMessage($scope.ID+"["+$scope.cards.toString()+"]"+$scope.IDPlayer);
                 }
             });
 
@@ -216,7 +228,12 @@
                 }
             }
             if(picked==$scope.numFind){
-                alert("Juego Terminado.\nGracias por Jugar.");
+                var cad="You Lose!";
+                console.log($scope.points+" "+$scope.maxScore);
+                if($scope.points>$scope.maxScore){
+                    cad="You Win!";
+                }
+                alert("Juego Terminado.\n"+cad+"\n\nGracias por Jugar.");
                 window.location.replace("newGame.html");
                 window.location.reload();
             }
@@ -262,7 +279,9 @@
             if(cad==$scope.ID){
                 cad = "";
                 for (j=i+1;j<cc.length-1;j++){
-                    if(cc[j]!=','){
+                    if(cc[j]==']'){
+                        break;
+                    } else if(cc[j]!=','){
                         cad+=cc[j];
                     } else {
                         arr.push(parseInt(cad));
@@ -271,6 +290,21 @@
                 }
                 arr.push(parseInt(cad));
                 $scope.updateCards(arr);
+                cad="";
+                for (i=j+1;i<cc.length-1;i++){
+                    cad+=cc[i];
+                }
+                console.log(cad+" "+$scope.IDPlayer);
+                if(cad==$scope.IDPlayer){
+                    $scope.points++;
+                } else {
+                    if(cad in $scope.mapUsers){
+                        $scope.mapUsers[cad]+=1;
+                    } else {
+                        $scope.mapUsers[cad]=1;
+                    }
+                    $scope.maxScore = Math.max($scope.maxScore,$scope.mapUsers[cad]);
+                }
             }
         }
 
@@ -279,9 +313,9 @@
         //   btnSend.onclick=sendMessage;
 
             var btnJoin = document.getElementById('joinG');
-            btnJoin.onclick=connect;
+            //btnJoin.onclick=connect;
             var btnCreate = document.getElementById('createG');
-            btnCreate.onclick=connect;
+            //btnCreate.onclick=connect;
 
         //   var btnDisconnect = document.getElementById('disconnect');
         //   btnDisconnect.onclick=disconnect;

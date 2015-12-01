@@ -134,7 +134,7 @@
             
             response.success(function(data, status, headers, config) {
                 var ans = data;
-                if(ans>0){
+                if(ans>=0){
                     
                     var name = "";
                     if (ans<10){
