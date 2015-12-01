@@ -9,6 +9,8 @@
         <script src="js/libs/angular.min.js"></script>
         <script src="js/libs/angular-route.js"></script>
         <script src="js/libs/multmodule.js"></script>
+        <script src="js/libs/sockjs-0.3.4.js"></script>
+        <script src="js/libs/stomp.js"></script>
         
         <title>Pictureka</title>
         <meta charset="utf-8" />
@@ -50,9 +52,9 @@
                     <div class="inner">
                         <div class="image"><img src="images/logo.png" alt=""/></div>
                         <div class="inner" id="startG">
-                            <button class="button" ng-click="joinMultGame()">Join A Game</button>
+                            <button id="joinG" class="button" ng-click="joinMultGame()">Join A Game</button>
                             <input type="text" id="IDGame" value="">
-                            <button class="button" ng-click="createMultGame()">New Game</button>
+                            <button id="createG" class="button" ng-click="createMultGame()">New Game</button>
                         </div>
                         <table id="cardsFind" border="0"> </table>
                         <p id="dispGID"></p>

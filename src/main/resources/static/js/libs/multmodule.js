@@ -8,12 +8,17 @@
     app.controller('game_control', function($scope,$http,$compile) {
         $scope.board = [[]];
         $scope.cards = [];
+        $scope.names = [];
         $scope.numFind = 0;
         $scope.width = 0;
         $scope.height= 0;
         $scope.select = "";
         $scope.ID="";
-        
+        $scope.IDPlayer="";
+        /*
+         * Game creation
+         * @returns {undefined}
+         */
         $scope.createMultGame = function() {
             
             var configList = {
@@ -93,21 +98,23 @@
                     var td = document.createElement('TD');
                     var image = document.createElement("img");
                     var name = "";
+                    
                     if ($scope.cards[i]<10){
                         name = "0"+$scope.cards[i];
                     } else {
                         name = ""+$scope.cards[i];
                     }
-
+                    $scope.names[i]="cfind"+name;
                     image.setAttribute("src","images/cards/IMG0"+name+".jpg");
-                    image.setAttribute("id","cfind"+name);
+                    image.setAttribute("id",$scope.names[i]);
                     image.style.height = side+'px';
                     image.style.width = side+'px';
+                    
                     td.appendChild(image);
                     tr.appendChild(td);
                 }
                 crd.appendChild(tr);
-                
+                console.log($scope.names);
                 var tbl= document.getElementById("tableBoard");
                 
                 for (i=0;i<$scope.width;i++){
@@ -156,6 +163,12 @@
             });
         };
         
+        /*
+         * Select card
+         * @param {type} cell
+         * @returns {undefined}
+         */
+        
         $scope.selectCard= function(cell) {
             var configList = {
                 url: "gameControl/findCard",
@@ -174,7 +187,12 @@
                     } else {
                         name = ""+ans;
                     }
-                    document.getElementById("cfind"+name).style.display="none";
+                    for (i=0;i<$scope.numFind;i++){
+                        if($scope.cards[i]==ans){
+                            $scope.cards[i]=-1;
+                        }
+                    }
+                    sendMessage($scope.ID+"["+$scope.cards.toString()+"]");
                 }
             });
 
@@ -182,6 +200,96 @@
                 alert("The petition has failed. HTTP Status:"+status);
             });
         };
+        
+        /*
+         * Comunication, modify cards
+         * @type @exp;Stomp@call;over
+         */
+        
+        $scope.updateCards= function(cards) {
+            var picked = 0;
+            for (i=0;i<$scope.numFind;i++){
+                $scope.cards[i] = cards[i];
+                if($scope.cards[i]<0){
+                    picked += 1;
+                    document.getElementById($scope.names[i]).style.visibility = "hidden";
+                }
+            }
+            if(picked==$scope.numFind){
+                alert("Juego Terminado.\nGracias por Jugar.");
+                //location.replace();
+                location.reload("newGame.html");
+            }
+        };
+        
+        /*
+         * WebSocket
+         */
+        
+        var stompClient = null;
+        
+        function connect() {
+            var socket = new SockJS('/ws');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/messages', function (data) {
+                    showServerMessage(data.body);
+                });
+            });
+        }
+
+        function disconnect() {
+            if (stompClient != null) {
+            stompClient.disconnect();
+            }
+            console.log("Disconnected");
+        }
+
+        function sendMessage(data) {
+            stompClient.send("/app/message", {}, JSON.stringify(data));
+        }
+
+        function showServerMessage(cc) {
+            var i,j, cad="", arr = [];
+            for (i=1;i<cc.length-1;i++){
+                if(cc[i]!='['){
+                    cad+=cc[i];
+                } else {
+                    break;
+                }
+            }
+            if(cad==$scope.ID){
+                cad = "";
+                for (j=i+1;j<cc.length-1;j++){
+                    if(cc[j]!=','){
+                        cad+=cc[j];
+                    } else {
+                        arr.push(parseInt(cad));
+                        cad = "";
+                    }
+                }
+                arr.push(parseInt(cad));
+                $scope.updateCards(arr);
+            }
+        }
+
+        function init() {
+        //   var btnSend = document.getElementById('send');
+        //   btnSend.onclick=sendMessage;
+
+            var btnJoin = document.getElementById('joinG');
+            btnJoin.onclick=connect;
+            var btnCreate = document.getElementById('createG');
+            btnCreate.onclick=connect;
+
+        //   var btnDisconnect = document.getElementById('disconnect');
+        //   btnDisconnect.onclick=disconnect;
+            disconnect();
+        }
+
+        window.onload = init;
+
         
     });
 }) ();
