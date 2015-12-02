@@ -289,7 +289,6 @@
                     }
                 }
                 arr.push(parseInt(cad));
-                $scope.updateCards(arr);
                 cad="";
                 for (i=j+1;i<cc.length-1;i++){
                     cad+=cc[i];
@@ -305,6 +304,7 @@
                     }
                     $scope.maxScore = Math.max($scope.maxScore,$scope.mapUsers[cad]);
                 }
+                $scope.updateCards(arr);
             }
         }
 
