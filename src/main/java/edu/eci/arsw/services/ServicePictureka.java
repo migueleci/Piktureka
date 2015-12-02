@@ -5,7 +5,6 @@
  */
 package edu.eci.arsw.services;
 
-import edu.eci.arsw.model.Blueprint;
 import edu.eci.arsw.model.Board;
 import edu.eci.arsw.model.Point;
 import java.util.ArrayList;

@@ -8,7 +8,6 @@ package edu.eci.arsw.controllers;
 import edu.eci.arsw.model.Blueprint;
 import edu.eci.arsw.model.Board;
 import edu.eci.arsw.services.ServicePictureka;
-import edu.eci.arsw.services.ServicesFacade;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
