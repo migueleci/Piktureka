@@ -13,7 +13,10 @@ There is a single player option too. Players can play by themselves and have fun
 
 Developers
 =======
-Cesar Alexander Bonilla\n
-Miguel Angel Romero\n
-Escuela Colombiana de Ingeniería Julio Garavito\n
-Bogotá, Colombia\n
+Cesar Alexander Bonilla
+=
+Miguel Angel Romero
+=
+Escuela Colombiana de Ingeniería Julio Garavito
+=
+Bogotá, Colombia
