@@ -14,9 +14,9 @@ There is a single player option too. Players can play by themselves and have fun
 Developers
 =======
 Cesar Alexander Bonilla
-=
+
 Miguel Angel Romero
-=
+
 Escuela Colombiana de Ingeniería Julio Garavito
-=
+
 Bogotá, Colombia
